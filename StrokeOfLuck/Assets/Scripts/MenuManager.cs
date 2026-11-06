@@ -3,12 +3,15 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 using System.Collections;
+using MoreMountains.Feedbacks;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
 public class MenuManager : MonoBehaviour
 {
+    [Header("Buttons")]
     [SerializeField] private Button playButton;
 
     [SerializeField] private Button optionsButton;
@@ -17,10 +20,18 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField] private Button backButton;
 
+    [Header("Menus")]
+
     [SerializeField] private GameObject mainMenuParent;
     [SerializeField] private GameObject optionsMenuParent;
 
     [SerializeField] private float delayTime;
+
+
+    [Header("Feedbacks")]
+
+    [SerializeField] private MMF_Player optionsHoverFeedback;
+    [SerializeField] private MMF_Player backHoverFeedback;
     private void Start()
     {
         playButton.onClick.AddListener(() =>
@@ -59,12 +70,16 @@ public class MenuManager : MonoBehaviour
 
     private void OptionsButtonAction()
     {
+        optionsHoverFeedback.RestoreInitialValues();
+        optionsHoverFeedback.StopFeedbacks();
         mainMenuParent.SetActive(false);
         optionsMenuParent.SetActive(true);
     }
 
     private void BackButtonAction()
     {
+        backHoverFeedback.RestoreInitialValues();
+        backHoverFeedback.StopFeedbacks();
         mainMenuParent.SetActive(true);
         optionsMenuParent.SetActive(false);
     }
