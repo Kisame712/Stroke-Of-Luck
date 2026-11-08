@@ -3,6 +3,7 @@ using System;
 using UnityEngine.UI;
 public class BaseCard : MonoBehaviour
 {
+    [SerializeField] private CardSO cardSO;
     private bool isSelected;
     public static event EventHandler<OnAnyBaseCardClickedEventArgs> OnAnyBaseCardClicked;
 
@@ -33,5 +34,8 @@ public class BaseCard : MonoBehaviour
         this.isSelected = isSelected;
     }
 
-    
+    public CardSO GetCardSO()
+    {
+        return cardSO;
+    }
 }
