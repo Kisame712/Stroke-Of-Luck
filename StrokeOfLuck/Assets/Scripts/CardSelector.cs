@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 public class CardSelector : MonoBehaviour
 {
+    [SerializeField] private int maxSelections;
     private List<BaseCard> selectedCards;
 
     private void Awake()
@@ -20,6 +21,11 @@ public class CardSelector : MonoBehaviour
 
     private void BaseCard_OnAnyBaseCardClicked(object sender, BaseCard.OnAnyBaseCardClickedEventArgs e)
     {
+        if(selectedCards.Count == maxSelections)
+        {
+            return;
+        }
+
         if(e.isSelected == false)
         {
             e.baseCard.SetIsSelected(true);
@@ -35,10 +41,14 @@ public class CardSelector : MonoBehaviour
 
             else
             {
-                Debug.Log("Card was not present!! Logical error");
+                Debug.LogError("Card was not present!! Logical error");
             }
         }
 
-        Debug.Log("selected cards list size- " + selectedCards.Count);
+    }
+
+    public List<BaseCard> GetSelectedCards()
+    {
+        return selectedCards;
     }
 }

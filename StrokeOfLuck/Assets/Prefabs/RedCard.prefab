@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6755603240502977124}
   - component: {fileID: 4934226742357405998}
   m_Layer: 5
-  m_Name: Card
+  m_Name: RedCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786f20172d510dc40823de24dc56f5c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseCard
+  cardSO: {fileID: 11400000, guid: 738b81b115c91da44b1ec93dc8d35ec0, type: 2}
 --- !u!114 &4934226742357405998
 MonoBehaviour:
   m_ObjectHideFlags: 0
